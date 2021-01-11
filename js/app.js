@@ -24,7 +24,7 @@ var seattleShop = {
         this.randomCust();
         for(var i = 0; i < opHours.length; i++){
             // create variable to hold calculation (perHour)
-            var perHour = Math.round(this.custPerHour[i] * this.avgCookie)
+            var perHour = Math.round(this.custPerHour[i] * this.avgCookie);
             
             // push var to array 
             this.cookiePerHour.push(perHour);          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
@@ -37,11 +37,33 @@ var seattleShop = {
         
         // console.log('The total sold is', this.totalCookie);
         console.log('cookie an hour', perHour);
+    },
+
+    render(){
+        this.cookiesAnHour();
+        // parent element
+            var unorderedList = document.getElementById('seattle');
+  
+            // create the list elements for the unordered list
+            for(var i = 0; i < opHours.length; i++){
+                var hoursLi = document.createElement('li');
+            
+                hoursLi.textContent = opHours[i] + ': ' + this.cookiePerHour[i] + ' cookies.';
+                unorderedList.appendChild(hoursLi);
+                console.log(opHours);  
+            }
+            var totalSold = document.createElement('li');
+            totalSold.textContent = 'The total sold for the day was: ' + this.totalCookie + ' cookies.';
+            unorderedList.appendChild(totalSold);
     } 
-    
 };
 
-// var li = document.createElement('li');
+seattleShop.render();
+
+
+
+
+
 
 var tokyoShop = {
     name: 'Tokyo',
