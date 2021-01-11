@@ -24,21 +24,24 @@ var seattleShop = {
         this.randomCust();
         for(var i = 0; i < opHours.length; i++){
             // create variable to hold calculation (perHour)
-            var perHour = this.custPerHour[i] * this.avgCookie
+            var perHour = Math.round(this.custPerHour[i] * this.avgCookie)
             
             // push var to array 
-            this.cookiePerHour.push(Math.round(perHour));          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+            this.cookiePerHour.push(perHour);          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
             console.log('cookie per hours', this.cookiePerHour);
+
             // add totalCookie here
-            this.totalCookie += Math.round(perHour);
+            this.totalCookie += perHour;
             console.log('The total sold is', this.totalCookie);
         }
+        
         // console.log('The total sold is', this.totalCookie);
         console.log('cookie an hour', perHour);
     } 
     
 };
 
+// var li = document.createElement('li');
 
 var tokyoShop = {
     name: 'Tokyo',
