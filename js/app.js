@@ -17,7 +17,8 @@ function Shop(name, minCust, maxCust, avgCookie){
     this.avgCookie = avgCookie,
     this.cookiePerHour = [],
     this.totalCookie = 0,
-    this.custPerHour = []
+    this.custPerHour = [],
+    Shop.allShops.push(this)
     
 };
 
@@ -33,7 +34,7 @@ Shop.prototype.getCustPerHour = function(){
         this.custPerHour.push(Math.round(random(this.minCust, this.maxCust)));
         // console.log('The i is: ', randomI);
     }
-    console.log('The i is: ', this.custPerHour);
+    // console.log('The i is: ', this.custPerHour);
 };
 
 
@@ -43,24 +44,27 @@ Shop.prototype.cookiesAnHour = function(){
     for(var i = 0; i < opHours.length; i++){
         var perHour = Math.round(this.custPerHour[i] * this.avgCookie);
         this.cookiePerHour.push(perHour);
-        console.log('Cookies sold per hour are: ', this.cookiePerHour);
+        // console.log('Cookies sold per hour are: ', this.cookiePerHour);
         this.totalCookie += perHour;
-        console.log('The total sold is', this.totalCookie);
+        // console.log('The total sold is', this.totalCookie);
     }
 };
 
 
+
+
 // creater the header function to add the store hours to the table 
+var saleTab = document.getElementById('salesContainer');
 function makeHeader(){
     // create table
-    var saleTab = document.getElementById('salesContainer');
+    
     var hoursRow = document.createElement('tr');
     var tableHeader = document.createElement('th');
     tableHeader.textContent = 'Store Locations';
     hoursRow.appendChild(tableHeader);
     saleTab.appendChild(hoursRow);
 
-    for(var i = 0; i < opHours.length; i++){
+    for(var i = 0; i <= opHours.length; i++){
       tableHeader = document.createElement('th'); 
       tableHeader.textContent = opHours[i];
       hoursRow.appendChild(tableHeader);
@@ -69,6 +73,31 @@ function makeHeader(){
     hoursRow.appendChild(tableHeader);
 };
 
+
+
+Shop.prototype.render = function(){
+    this.cookiesAnHour();
+    var hourlyCooks = document.createElement('tr');
+    var hourlyTotes = document.createElement('td');
+    var totalCook = document.createElement('td');
+    hourlyTotes.textContent = this.name;
+    hourlyCooks.appendChild(hourlyTotes);
+    saleTab.appendChild(hourlyCooks);
+    for(var i = 0; i < opHours.length; i++){
+        // console.log(this.cookiePerHour[i]);
+        hourlyTotes = document.createElement('td'); 
+        hourlyTotes.textContent = this.cookiePerHour[i];
+        hourlyCooks.appendChild(hourlyTotes);
+      }
+    totalCook.textContent = this.totalCookie;
+    hourlyCooks.appendChild(totalCook);
+
+
+    
+   
+};
+
+
 // create the foot function for hourly totals 
 function makeFooter(){
     var foot = document.getElementById('salesContainer');
@@ -76,30 +105,28 @@ function makeFooter(){
     var footFooter = document.createElement('th');
     footFooter.textContent = 'Hourly Totals';
     footRow.appendChild(footFooter);
+    var totalOfTotals = 0;
+    var hourlyTotals = 0;
+    for(var i = 0; i < opHours.length; i++){
+        hourlyTotals = 0;
+        for(var j = 0; j < allShops.length; j++){
+            hourlyTotals += Shop.allShops[j].cookiePerHour[i];
+            console.log(hourlyTotal);
+        }
+    }
+
     foot.appendChild(footRow);
 };
-
-Shop.prototype.fillTable = function(){
-    
-    var hourlyCooks = document.createElement('tr');
-    var hourlyTotes = document.createElement('th');
-
-
-};
+Shop.allShops = [];
 
 makeHeader();
+new Shop('Seattle', 23, 65, 6.3).render();
+new Shop('Tokyo', 3, 24, 1.2).render();
+new Shop('Dubai', 11, 38, 3.7).render();
+new Shop('Paris', 20, 38, 2.3).render();
+new Shop('Lima', 2, 16, 4.6).render();
 makeFooter();
 
 
 
-
-
-
-
-
-
-
-
-
-
-new Shop('seattle', 23, 65, 6.3).cookiesAnHour();
+console.log(allShops);
