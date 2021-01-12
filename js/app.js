@@ -72,9 +72,51 @@ var tokyoShop = {
     avgCookie: 1.2,
     custPerHour: [],
     cookiePerHour: [],
-    totalCookie: 0
-    
+    totalCookie: 0,
+    randomCust: function(){                                         
+        for(var i = 0; i < opHours.length; i++){
+         this.custPerHour.push(random(this.minCust, this.maxCust));                 // this.cookiePerHour[i] = custPerHour[i] * avgCookie;
+         console.log(this.custPerHour); 
+        }
+    },
+    cookiesAnHour: function(){
+        this.randomCust();
+        for(var i = 0; i < opHours.length; i++){
+            // create variable to hold calculation (perHour)
+            var perHour = Math.round(this.custPerHour[i] * this.avgCookie);
+            
+            // push var to array 
+            this.cookiePerHour.push(perHour);          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+            console.log('cookie per hours', this.cookiePerHour);
+
+            // add totalCookie here
+            this.totalCookie += perHour;
+            console.log('The total sold is', this.totalCookie);
+        }
+        
+        // console.log('The total sold is', this.totalCookie);
+        console.log('cookie an hour', perHour);
+    },
+
+    render(){
+        this.cookiesAnHour();
+        // parent element
+            var unorderedList = document.getElementById('tokyo');
+  
+            // create the list elements for the unordered list
+            for(var i = 0; i < opHours.length; i++){
+                var hoursLi = document.createElement('li');
+            
+                hoursLi.textContent = opHours[i] + ': ' + this.cookiePerHour[i] + ' cookies.';
+                unorderedList.appendChild(hoursLi);
+                console.log(opHours);  
+            }
+            var totalSold = document.createElement('li');
+            totalSold.textContent = 'The total sold for the day was: ' + this.totalCookie + ' cookies.';
+            unorderedList.appendChild(totalSold);
+    }
 };
+tokyoShop.render();
 
 var dubaiShop = {
     name: 'Dubai',
@@ -83,9 +125,51 @@ var dubaiShop = {
     avgCookie: 3.7,
     custPerHour: [],
     cookiePerHour: [],
-    totalCookie: 0
-    
+    totalCookie: 0,
+    randomCust: function(){                                         
+        for(var i = 0; i < opHours.length; i++){
+         this.custPerHour.push(random(this.minCust, this.maxCust));                 // this.cookiePerHour[i] = custPerHour[i] * avgCookie;
+         console.log(this.custPerHour); 
+        }
+    },
+    cookiesAnHour: function(){
+        this.randomCust();
+        for(var i = 0; i < opHours.length; i++){
+            // create variable to hold calculation (perHour)
+            var perHour = Math.round(this.custPerHour[i] * this.avgCookie);
+            
+            // push var to array 
+            this.cookiePerHour.push(perHour);          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+            console.log('cookie per hours', this.cookiePerHour);
+
+            // add totalCookie here
+            this.totalCookie += perHour;
+            console.log('The total sold is', this.totalCookie);
+        }
+        
+        // console.log('The total sold is', this.totalCookie);
+        console.log('cookie an hour', perHour);
+    },
+
+    render(){
+        this.cookiesAnHour();
+        // parent element
+            var unorderedList = document.getElementById('dubai');
+  
+            // create the list elements for the unordered list
+            for(var i = 0; i < opHours.length; i++){
+                var hoursLi = document.createElement('li');
+            
+                hoursLi.textContent = opHours[i] + ': ' + this.cookiePerHour[i] + ' cookies.';
+                unorderedList.appendChild(hoursLi);
+                console.log(opHours);  
+            }
+            var totalSold = document.createElement('li');
+            totalSold.textContent = 'The total sold for the day was: ' + this.totalCookie + ' cookies.';
+            unorderedList.appendChild(totalSold);
+    }
 };
+dubaiShop.render();
 
 var parisShop = {
     name: 'Paris',
@@ -94,9 +178,51 @@ var parisShop = {
     avgCookie: 2.3,
     custPerHour: [],
     cookiePerHour: [],
-    totalCookie: 0
-    
+    totalCookie: 0,
+    randomCust: function(){                                         
+        for(var i = 0; i < opHours.length; i++){
+         this.custPerHour.push(random(this.minCust, this.maxCust));                 // this.cookiePerHour[i] = custPerHour[i] * avgCookie;
+         console.log(this.custPerHour); 
+        }
+    },
+    cookiesAnHour: function(){
+        this.randomCust();
+        for(var i = 0; i < opHours.length; i++){
+            // create variable to hold calculation (perHour)
+            var perHour = Math.round(this.custPerHour[i] * this.avgCookie);
+            
+            // push var to array 
+            this.cookiePerHour.push(perHour);          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+            console.log('cookie per hours', this.cookiePerHour);
+
+            // add totalCookie here
+            this.totalCookie += perHour;
+            console.log('The total sold is', this.totalCookie);
+        }
+        
+        // console.log('The total sold is', this.totalCookie);
+        console.log('cookie an hour', perHour);
+    },
+
+    render(){
+        this.cookiesAnHour();
+        // parent element
+            var unorderedList = document.getElementById('paris');
+  
+            // create the list elements for the unordered list
+            for(var i = 0; i < opHours.length; i++){
+                var hoursLi = document.createElement('li');
+            
+                hoursLi.textContent = opHours[i] + ': ' + this.cookiePerHour[i] + ' cookies.';
+                unorderedList.appendChild(hoursLi);
+                console.log(opHours);  
+            }
+            var totalSold = document.createElement('li');
+            totalSold.textContent = 'The total sold for the day was: ' + this.totalCookie + ' cookies.';
+            unorderedList.appendChild(totalSold);
+    }
 };
+parisShop.render();
 
 var limaShop = {
     name: 'Lima',
@@ -105,9 +231,51 @@ var limaShop = {
     avgCookie: 4.6,
     custPerHour: [],
     cookiePerHour: [],
-    totalCookie: 0
-    
+    totalCookie: 0,
+    randomCust: function(){                                         
+        for(var i = 0; i < opHours.length; i++){
+         this.custPerHour.push(random(this.minCust, this.maxCust));                 // this.cookiePerHour[i] = custPerHour[i] * avgCookie;
+         console.log(this.custPerHour); 
+        }
+    },
+    cookiesAnHour: function(){
+        this.randomCust();
+        for(var i = 0; i < opHours.length; i++){
+            // create variable to hold calculation (perHour)
+            var perHour = Math.round(this.custPerHour[i] * this.avgCookie);
+            
+            // push var to array 
+            this.cookiePerHour.push(perHour);          // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
+            console.log('cookie per hours', this.cookiePerHour);
+
+            // add totalCookie here
+            this.totalCookie += perHour;
+            console.log('The total sold is', this.totalCookie);
+        }
+        
+        // console.log('The total sold is', this.totalCookie);
+        console.log('cookie an hour', perHour);
+    },
+
+    render(){
+        this.cookiesAnHour();
+        // parent element
+            var unorderedList = document.getElementById('lima');
+  
+            // create the list elements for the unordered list
+            for(var i = 0; i < opHours.length; i++){
+                var hoursLi = document.createElement('li');
+            
+                hoursLi.textContent = opHours[i] + ': ' + this.cookiePerHour[i] + ' cookies.';
+                unorderedList.appendChild(hoursLi);
+                console.log(opHours);  
+            }
+            var totalSold = document.createElement('li');
+            totalSold.textContent = 'The total sold for the day was: ' + this.totalCookie + ' cookies.';
+            unorderedList.appendChild(totalSold);
+    }
 };
+limaShop.render();
 
 // = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;
 
