@@ -9,7 +9,7 @@ var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4
 //     cookiePerHour: [],
 //     totalCookie: 0,
 //     custPerHour: [],
-
+// create the constructor
 function Shop(name, minCust, maxCust, avgCookie){
     this.name = name,
     this.minCust = minCust,
@@ -62,7 +62,7 @@ function makeHeader(){
     tableHeader.textContent = 'Store Locations';
     hoursRow.appendChild(tableHeader);
     saleTab.appendChild(hoursRow);
-
+    // add hours to the table
     for(var i = 0; i <= opHours.length; i++){
       tableHeader = document.createElement('th'); 
       tableHeader.textContent = opHours[i];
@@ -73,7 +73,7 @@ function makeHeader(){
 }
 
 
-
+// render the constructor and create the table
 Shop.prototype.render = function(){
     this.cookiesAnHour();
     var hourlyCooks = document.createElement('tr');
@@ -92,6 +92,7 @@ Shop.prototype.render = function(){
     hourlyCooks.appendChild(totalCook); 
 };
 
+// create an array to store all the shop info
 Shop.allShops = [];
 // create the foot function for hourly totals 
 function makeFooter(){
@@ -102,6 +103,7 @@ function makeFooter(){
     footRow.appendChild(footFooter);
     var totalOfTotals = 0;
     var hourlyTotals = 0;
+    // use a nested loop to find and display the hourly totals and the total overall
     for(var i = 0; i < opHours.length; i++){
         hourlyTotals = 0;
         for(var j = 0; j < Shop.allShops.length; j++){
@@ -110,10 +112,12 @@ function makeFooter(){
             // console.log(hourlyTotals);
             totalOfTotals += Shop.allShops[j].cookiePerHour[i];
         }
+        // display the hourly totals
         footFooter = document.createElement('th');
         footFooter.textContent = hourlyTotals;
         footRow.appendChild(footFooter);
     }
+    // display the final total
     footFooter = document.createElement('th');
     footFooter.textContent = totalOfTotals;
     footRow.appendChild(footFooter);
@@ -121,7 +125,7 @@ function makeFooter(){
     foot.appendChild(footRow);
 }
 
-
+// call all functions and add data
 makeHeader();
 new Shop('Seattle', 23, 65, 6.3).render();
 new Shop('Tokyo', 3, 24, 1.2).render();
