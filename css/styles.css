@@ -11,10 +11,11 @@ body {
     /* width: 1000px; */
     background-color: salmon;
 }
+
 body li{
     color: rgb(0, 0, 0);
-    background-color: gold;
-    width: 100px;
+    background-color: rgb(255, 217, 0);
+    width: 225px;
 }
 
 .contact li{
@@ -27,14 +28,15 @@ body li{
 header h1 {
     font-family: 'Asset';
     color:rgb(130, 250, 190);
-    font-size: 45px;
-    margin-left: 700px;
+    font-size: 30px;
+    margin-left: 200px;
+    margin-top: 0px;
 }
 nav{
     height: 57px;
     background-color: rgb(165, 165, 165);
-    width: 125px;
-    height: 90px;
+    width: 150px;
+    height: 55px;
     margin: 0px;
     align-content: left;
     font-family: 'Calibri';
@@ -42,7 +44,7 @@ nav{
 #navi li{
     font-size: 25px;
     background-color:  rgb(165, 165, 165);
-    width: 125px;
+    width: 160px;
 }
 
   
@@ -73,6 +75,7 @@ table{
     background-color: white;
     margin-left: 250px;
     margin-top: 100px;
+    width: 100px;
 }
 td{
     height: 15px;
@@ -84,4 +87,34 @@ th{
     height: 15px;
     outline: solid indigo;
     padding: 15px;
+}
+
+h4{
+    color: rgb(255, 255, 255);
+}
+
+#locations{
+    background-color: rgb(116, 46, 195);
+    width: 350px;
+    margin-left: 50px;
+}
+#locations h3{
+    margin-left: 70px;
+}
+#locations h4{
+    color: rgb(224, 224, 224);
+    font-size: 35px;
+    margin-left: 100px;
+}
+#locations p{
+    font-size: 25px;
+    margin-left: 60px;
+}
+
+#imageFamily{
+    
+    height: 200px;
+    z-index: -1;
+    width: 200px;
+    margin-left: 100px;
 }
