@@ -117,3 +117,19 @@ Replace all of your object literals for the salmon cookie stand with a single co
 Replace the lists of your data for each store and build a single table of data instead. It should look similar to the following:
 
 Display each stores data in a table format similar to what is below. Break each column by the hour and complete each row with a “Daily Location Total”.
+
+
+# Lab 8  
+Continue working on the functionality of your sales.html page if you do not have it working 100% yet, including the row of totals across the bottom.
+
+Pat has provided you 7 additional images that they would like to see on the home page of the site. These images are located in your daily class GitHub repo: class-08/lab-b/assets/.
+
+Your public-facing index.html page should include the following:
+
+locations with addresses,
+hours open
+contact information
+Anything else you feel neccesary.
+A link to your sales.html page
+Be sure to also include a link to your index.html page on your sales.html pages as well.
+Feel free to make this information up. Get creative, have fun, but remember to be professional.
