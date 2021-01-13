@@ -1,6 +1,7 @@
 # cookie-stand
 
 # Lab 6  
+
 Problem Domain
 Your friend Pat has come up with a business idea by combining two signature Seattle icons: Pat has developed a recipe for a coffee-time confection called Salmon Cookies. These cookies made into the shape of a salmon that has just a hint of fishy goodness.
 
