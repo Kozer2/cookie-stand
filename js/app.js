@@ -52,11 +52,11 @@ Shop.prototype.cookiesAnHour = function(){
 
 
 
-// creater the header function to add the store hours to the table 
+// creater the header function to add the store hours to the table
 var saleTab = document.getElementById('salesContainer');
 function makeHeader(){
   // create table
-    
+
   var hoursRow = document.createElement('tr');
   var tableHeader = document.createElement('th');
   tableHeader.textContent = 'Store Locations';
@@ -64,7 +64,7 @@ function makeHeader(){
   saleTab.appendChild(hoursRow);
   // add hours to the table
   for(var i = 0; i <= opHours.length; i++){
-    tableHeader = document.createElement('th'); 
+    tableHeader = document.createElement('th');
     tableHeader.textContent = opHours[i];
     hoursRow.appendChild(tableHeader);
   }
@@ -84,17 +84,17 @@ Shop.prototype.render = function(){
   saleTab.appendChild(hourlyCooks);
   for(var i = 0; i < opHours.length; i++){
     // console.log(this.cookiePerHour[i]);
-    hourlyTotes = document.createElement('td'); 
+    hourlyTotes = document.createElement('td');
     hourlyTotes.textContent = this.cookiePerHour[i];
     hourlyCooks.appendChild(hourlyTotes);
   }
   totalCook.textContent = this.totalCookie;
-  hourlyCooks.appendChild(totalCook); 
+  hourlyCooks.appendChild(totalCook);
 };
 
 // create an array to store all the shop info
 Shop.allShops = [];
-// create the foot function for hourly totals 
+// create the foot function for hourly totals
 function makeFooter(){
   var foot = document.getElementById('salesContainer');
   var footRow = document.createElement('tr');
@@ -107,7 +107,7 @@ function makeFooter(){
   for(var i = 0; i < opHours.length; i++){
     hourlyTotals = 0;
     for(var j = 0; j < Shop.allShops.length; j++){
-            
+
       hourlyTotals += Shop.allShops[j].cookiePerHour[i];
       // console.log(hourlyTotals);
       totalOfTotals += Shop.allShops[j].cookiePerHour[i];
