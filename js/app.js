@@ -135,4 +135,42 @@ new Shop('Lima', 2, 16, 4.6).render();
 makeFooter();
 
 
+// create a function to read the values submitted on the new shop form
+function onFormSubmit(event){
+  event.preventDefault();
+  var nameInput = document.getElementById('name');
+  var nameValue = nameInput.value;
+  console.log('Name Value:', nameValue);
+
+  var minimumInput = document.getElementById('minimumCust');
+  var minCustValue = minimumInput.value;
+  console.log(typeof(minCustValue));
+
+  var maximumInput = document.getElementById('maximumCust');
+  var maxCustValue = maximumInput.value;
+  console.log('Max Cust:', maxCustValue);
+
+
+  var averageInput = document.getElementById('averageCookie');
+  var averageCookieValue = averageInput.value;
+  console.log('Avg Cookie:', averageCookieValue);
+
+  var newShop = new Shop(nameValue, minCustValue, maxCustValue, averageCookieValue);
+  console.log(newShop);
+  newShop.render();
+  makeFooter();
+  var form = document.getElementById('newShop');
+  form.reset();
+}
+
+
+//set up event listener to listen to the submit event.
+// 1 which element do we need
+var formElement = document.getElementById('newShop');
+
+
+// 2 which event am I listening for?
+// 3 what code should I run when that event happens
+formElement.addEventListener('submit', onFormSubmit);
+
 
