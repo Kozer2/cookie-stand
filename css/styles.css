@@ -9,7 +9,7 @@ body {
     background-size: 100%;
     margin: 0 auto;
     /* width: 1000px; */
-    background-color: salmon;
+    background-color: salmon; 
 }
 
 body li{
@@ -17,7 +17,18 @@ body li{
     background-color: rgb(255, 217, 0);
     width: 225px;
 }
+body h4{
+    font-size: 35px;
+    text-align: center;
+}
+body p{
+    text-align: center;
+}
 
+
+.contact ol{
+    margin-left: 950px;
+}
 .contact li{
     color: rgb(0, 18, 59);
     font-size: 40px;
@@ -25,6 +36,9 @@ body li{
     width: 700px;
 }
 
+header{
+    margin-bottom: 50px;
+}
 header h1 {
     font-family: 'Asset';
     color:rgb(130, 250, 190);
@@ -118,3 +132,13 @@ h4{
     width: 200px;
     margin-left: 100px;
 }
+
+form{
+    margin-left: 300px;
+    background-color: red;
+    width: 850;
+}
+form button{
+    margin-left: 100px;
+}
+
