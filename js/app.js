@@ -2,14 +2,36 @@
 //
 var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm', '7pm', '8pm'];
 
-// name: 'Seattle',
-//     minCust: 23,
-//     maxCust: 65,
-//     avgCookie: 6.3,
-//     cookiePerHour: [],
-//     totalCookie: 0,
-//     custPerHour: [],
-// create the constructor
+// create the foot function for hourly totals
+function makeFooter(){
+  var foot = document.getElementById('salesContainer');
+  var footRow = document.createElement('tr');
+  footRow.innerHTML = '';
+  var footFooter = document.createElement('th');
+  footFooter.textContent = 'Hourly Totals';
+  footRow.appendChild(footFooter);
+  var totalOfTotals = 0;
+  var hourlyTotals = 0;
+  // use a nested loop to find and display the hourly totals and the total overall
+  for(var i = 0; i < opHours.length; i++){
+    hourlyTotals = 0;
+    for(var j = 0; j < Shop.allShops.length; j++){
+      hourlyTotals += Shop.allShops[j].cookiePerHour[i];
+      // console.log(hourlyTotals);
+      totalOfTotals += Shop.allShops[j].cookiePerHour[i];
+    }
+    // display the hourly totals
+    footFooter = document.createElement('th');
+    footFooter.textContent = hourlyTotals;
+    footRow.appendChild(footFooter);
+  }
+  // display the final total
+  footFooter = document.createElement('th');
+  footFooter.textContent = totalOfTotals;
+  footRow.appendChild(footFooter);
+  foot.appendChild(footRow);
+}
+
 function Shop(name, minCust, maxCust, avgCookie){
   this.name = name,
   this.minCust = minCust,
@@ -49,9 +71,6 @@ Shop.prototype.cookiesAnHour = function(){
   }
 };
 
-
-
-
 // creater the header function to add the store hours to the table
 var saleTab = document.getElementById('salesContainer');
 function makeHeader(){
@@ -71,7 +90,6 @@ function makeHeader(){
   tableHeader.textContent = 'Daily Location Total';
   hoursRow.appendChild(tableHeader);
 }
-
 
 // render the constructor and create the table
 Shop.prototype.render = function(){
@@ -94,46 +112,27 @@ Shop.prototype.render = function(){
 
 // create an array to store all the shop info
 Shop.allShops = [];
-// create the foot function for hourly totals
-function makeFooter(){
-  var foot = document.getElementById('salesContainer');
-  var footRow = document.createElement('tr');
-  var footFooter = document.createElement('th');
-  footFooter.textContent = 'Hourly Totals';
-  footRow.appendChild(footFooter);
-  var totalOfTotals = 0;
-  var hourlyTotals = 0;
-  // use a nested loop to find and display the hourly totals and the total overall
-  for(var i = 0; i < opHours.length; i++){
-    hourlyTotals = 0;
-    for(var j = 0; j < Shop.allShops.length; j++){
 
-      hourlyTotals += Shop.allShops[j].cookiePerHour[i];
-      // console.log(hourlyTotals);
-      totalOfTotals += Shop.allShops[j].cookiePerHour[i];
-    }
-    // display the hourly totals
-    footFooter = document.createElement('th');
-    footFooter.textContent = hourlyTotals;
-    footRow.appendChild(footFooter);
+Shop.renderAll = function(){
+  // empty existing customer list "salesContainer"
+  var tBody = document.getElementById('salesContainer');
+  tBody.innerHTML = '';
+  makeHeader();
+  // create array to hold the total cookies each hour
+  for(var i = 0; i < Shop.allShops.length; i++){
+    Shop.allShops[i].render();
   }
-  // display the final total
-  footFooter = document.createElement('th');
-  footFooter.textContent = totalOfTotals;
-  footRow.appendChild(footFooter);
-
-  foot.appendChild(footRow);
-}
+  makeFooter();
+};
 
 // call all functions and add data
-makeHeader();
 new Shop('Seattle', 23, 65, 6.3).render();
 new Shop('Tokyo', 3, 24, 1.2).render();
 new Shop('Dubai', 11, 38, 3.7).render();
 new Shop('Paris', 20, 38, 2.3).render();
 new Shop('Lima', 2, 16, 4.6).render();
-makeFooter();
 
+Shop.renderAll();
 
 // create a function to read the values submitted on the new shop form
 function onFormSubmit(event){
@@ -157,8 +156,7 @@ function onFormSubmit(event){
 
   var newShop = new Shop(nameValue, minCustValue, maxCustValue, averageCookieValue);
   console.log(newShop);
-  newShop.render();
-  makeFooter();
+  Shop.renderAll();
   var form = document.getElementById('newShop');
   form.reset();
 }
