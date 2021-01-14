@@ -86,7 +86,7 @@ h3{
 
 table{
     height: 50px;
-    background-color: white;
+    background-color: rgb(151, 151, 151);
     margin-left: 250px;
     margin-top: 100px;
     width: 100px;
@@ -134,11 +134,15 @@ h4{
 }
 
 form{
-    margin-left: 300px;
-    background-color: red;
-    width: 850;
+    margin-top: 15px;
+    margin-left: 285px;
+    background-color: rgb(18, 184, 206);
+    width: 1000px;
+}form label, input{
+    display: inline-block;
+    /* padding: 1px; */
 }
 form button{
-    margin-left: 100px;
+    margin-left: 200px;
 }
 
